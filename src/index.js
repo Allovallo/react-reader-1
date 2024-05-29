@@ -4,13 +4,15 @@ import "./index.css";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./componenets/GlobalStyle";
 import { Reader } from "./componenets/Reader/Reader";
+import publications from "./publications.json";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+const theme = {};
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Reader />
+      <Reader items={publications} />
     </ThemeProvider>
   </React.StrictMode>
 );
