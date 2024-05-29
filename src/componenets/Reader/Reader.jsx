@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Controls } from "./Controls";
+import { Progress } from "./Progress";
+import { Publication } from "./Publication";
 
 export class Reader extends Component {
   state = {
@@ -24,14 +26,9 @@ export class Reader extends Component {
           onChange={this.changeIndex}
         />
 
-        <p>
-          {this.state.index + 1}/{this.props.items.length}
-        </p>
+        <Progress current={index + 1} total={totalItems} />
 
-        <article>
-          <h2>{currentItem.title}</h2>
-          <p>{currentItem.text}</p>
-        </article>
+        <Publication item={currentItem} />
       </div>
     );
   }
