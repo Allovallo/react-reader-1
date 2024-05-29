@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Controls } from "./Controls";
 
 export class Reader extends Component {
   state = {
@@ -10,18 +11,18 @@ export class Reader extends Component {
   };
 
   render() {
-    const currentItem = this.props.items[this.state.index];
+    const { index } = this.state;
+    const { items } = this.props;
+    const totalItems = items.length;
+    const currentItem = items[index];
 
     return (
       <div>
-        <section>
-          <button type="button" onClick={() => this.changeIndex(-1)}>
-            Назад
-          </button>
-          <button type="button" onClick={() => this.changeIndex(1)}>
-            Вперед
-          </button>
-        </section>
+        <Controls
+          current={index + 1}
+          total={totalItems}
+          onChange={this.changeIndex}
+        />
 
         <p>
           {this.state.index + 1}/{this.props.items.length}
